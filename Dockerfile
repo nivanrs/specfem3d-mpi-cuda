@@ -60,7 +60,7 @@ RUN sed -i 's/*compute_20*//g' Makefile
 RUN make all
 
 ## Install open ssh
-User root
+USER root
 WORKDIR /
 RUN mkdir /var/run/sshd
 
@@ -76,10 +76,9 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 EXPOSE 22
-CMD ["/bin/bash"]
 USER ${USER}
 
-CMD ["/usr/sbin/sshd", "-D"]
+RUN /usr/sbin/sshd
 CMD ["/bin/bash"]
 
 
