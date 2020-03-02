@@ -60,6 +60,7 @@ RUN sed -i 's/*compute_20*//g' Makefile
 RUN make all
 
 ## Install open ssh
+User root
 WORKDIR /
 RUN mkdir /var/run/sshd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -71,6 +72,10 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 EXPOSE 22
-
 CMD ["/bin/bash"]
+USER ${USER}
+
+CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/bin/bash"]
+
 
