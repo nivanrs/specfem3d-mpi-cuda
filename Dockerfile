@@ -1,10 +1,9 @@
-FROM ubuntu:18.04
-# In case the main package repositories are down, use the alternative base image:
-# FROM gliderlabs/alpine:3.4
+FROM nvidia/cuda:10.2-devel-ubuntu18.04
+# NVIDIA CUDA BASE IMAGE
 
 MAINTAINER nivanrs
 
-ARG REQUIRE="sudo build-essential gfortran git byacc zlib1g-dev wget apt-utils openssh-server iproute2 net-tools"
+ARG REQUIRE="sudo build-essential gfortran git byacc zlib1g-dev wget apt-utils openssh-server iproute2 net-tools vim"
 RUN apt update && apt upgrade -y
 RUN apt install ${REQUIRE} -y
 
