@@ -80,5 +80,5 @@ EXPOSE 22
 
 WORKDIR /root/project
 
-CMD ["/bin/bash"]
+CMD ["/usr/sbin/sshd", "-D"]
 
