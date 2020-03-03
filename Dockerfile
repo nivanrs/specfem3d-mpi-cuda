@@ -54,7 +54,7 @@ RUN git clone --recursive --branch devel https://github.com/geodynamics/specfem3
 WORKDIR ${WORKDIR}/specfem3d/
 ENV MPI_INC=/usr/local/include:$MPI_INC=/usr/local/include
 ENV LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
-RUN ./configure FC=gfortran CC=gcc MPIFC=mpif90 --with-mpi MPI_INC=/usr/local/include USE_BUNDLED_SCOTCH=1 LD_LIBRARY_PATH=/usr/local/lib/
+RUN ./configure FC=gfortran CC=gcc MPIFC=mpif90 --with-mpi MPI_INC=/usr/local/include USE_BUNDLED_SCOTCH=1 LD_LIBRARY_PATH=/usr/local/lib/ --with-cuda
 RUN sed -i 's/*compute_20*//g' Makefile
 RUN make all
 
