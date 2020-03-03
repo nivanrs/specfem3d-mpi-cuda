@@ -57,7 +57,7 @@ ENV LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
 ENV CUDA_LIB=/usr/local/cuda-10.2/lib64/
 
 RUN ./configure FC=gfortran CC=gcc MPIFC=mpif90 --with-mpi MPI_INC=/usr/local/include USE_BUNDLED_SCOTCH=1 LD_LIBRARY_PATH=/usr/local/lib/ --with-cuda
-RUN sed -i 's/*compute_20*//g' Makefile
+RUN sed -i '/compute_20/d' Makefile
 RUN make all
 
 # SSH INSTALLATION
