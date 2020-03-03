@@ -78,7 +78,7 @@ RUN apt-get clean && \
 
 EXPOSE 22
 
-WORKDIR /root/project
+WORKDIR ${WORKDIR}
 
 CMD ["/usr/sbin/sshd", "-D"]
 
